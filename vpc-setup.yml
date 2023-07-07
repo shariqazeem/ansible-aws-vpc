@@ -153,7 +153,7 @@
         - NATGW_out.nat_gateway_id
         - privRT_out.route_table.id
 
-    - ansible.builtin.set_facts:
+    - ansible.builtin.set_fact:
         vpcid: "{{vpcout.vpc.id}}"     
         pubsub1id: "{{pubsub1_out.subnet.id}}"
         pubsub2id: "{{pubsub2_out.subnet.id}}"

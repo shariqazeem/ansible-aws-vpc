@@ -42,16 +42,13 @@
         key_name: vprofile-key
         region: "{{ region }}"
         instance_type: t2.micro
-        image_id: ami-069d73f3235b535bd
+        image_id: "{{bastion_ami}}" 
         wait: yes
         wait_timeout: 300
         tags:
-          - key: Name
-            value: "Bastion_Host"
-          - key: Project
-            value: Vprofile
-          - key: Owner
-            value: Shariq
+          Name: "Bastion_Host"
+          Project: Vprofile
+          Owner: Shariq
         vpc_subnet_id: "{{ pubsub1id }}"
       register: bastionHost_out
 

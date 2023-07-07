@@ -68,7 +68,7 @@
         launch_bastion: "{{ stop_output.results | rejectattr('failed') | list | length == 0 }}"
 
     - name: Launch Bastion Host if needed
-      ec2:
+      ec2_instance:
         key_name: vprofile-key
         region: "{{ region }}"
         instance_type: t2.micro

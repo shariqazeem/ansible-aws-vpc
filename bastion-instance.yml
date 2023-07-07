@@ -44,7 +44,7 @@
         image: "{{ bastion_ami }}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           - key: Name
             value: "Bastion_Host"
           - key: Project
@@ -75,7 +75,7 @@
         image: "{{ bastion_ami }}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           - key: Name
             value: "Bastion_Host"
           - key: Project

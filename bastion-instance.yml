@@ -37,22 +37,51 @@
       register: BastionSG_out
 
     - name: Creating Bastion Host
-      ec2: 
+      ec2:
         key_name: vprofile-key
-        region: "{{region}}"
+        region: "{{ region }}"
         instance_type: t2.micro
-        image: "{{bastion_ami}}"
+        image: "{{ bastion_ami }}"
         wait: yes
         wait_timeout: 300
         instance_tags:
-          Name: "Bastion_Host"
-          Project: Vprofile
-          Owner: Shariq
-        exact_count: 1
-        count_tag: 
-          Name: "Bastion_Host"
-          Project: Vprofile
-          Owner: Shariq
-        group_id: "{{BastionSG_out.group_id}}"
-        vpc_subnet_id: "{{pubsub1id}}"
+          - key: Name
+            value: "Bastion_Host"
+          - key: Project
+            value: Vprofile
+          - key: Owner
+            value: Shariq
+        vpc_subnet_id: "{{ pubsub1id }}"
       register: bastionHost_out
+
+    - name: Stop Bastion Host if it already exists
+      ec2_instance:
+        instance_ids: "{{ item.instance_id }}"
+        state: stopped
+      loop: "{{ bastionHost_out.instances }}"
+      when: item.state.name == "running"
+      register: stop_output
+      ignore_errors: yes
+
+    - name: Set fact if Bastion Host needs to be launched
+      set_fact:
+        launch_bastion: "{{ stop_output.results | rejectattr('failed') | list | length == 0 }}"
+
+    - name: Launch Bastion Host if needed
+      ec2:
+        key_name: vprofile-key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{ bastion_ami }}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          - key: Name
+            value: "Bastion_Host"
+          - key: Project
+            value: Vprofile
+          - key: Owner
+            value: Shariq
+        vpc_subnet_id: "{{ pubsub1id }}"
+      when: launch_bastion | default(true)
+

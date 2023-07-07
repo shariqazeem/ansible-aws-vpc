@@ -181,6 +181,4 @@
           pubRTid: {{pubRT_out.route_table.id}}
           NATGWid: {{NATGW_out.nat_gateway_id}}
           privRTid: {{privRT_out.route_table.id}}
-
         dest: vars/output_vars
-

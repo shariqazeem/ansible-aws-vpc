@@ -13,5 +13,5 @@
         dns_support: yes
         dns_hostnames: yes
         tenancy: default
-        state: {{state}}
+        state: "{{state}}"
       register: vpcout

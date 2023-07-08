@@ -73,7 +73,7 @@
         image: "{{nginx_ami}}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           Name: "web01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
@@ -89,7 +89,7 @@
         image: "{{tomcat_ami}}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           Name: "app01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
@@ -105,7 +105,7 @@
         image: "{{memcache_ami}}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           Name: "mc01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
@@ -121,7 +121,7 @@
         image: "{{rmq_ami}}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           Name: "rmq01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
@@ -137,7 +137,7 @@
         image: "{{mysql_ami}}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           Name: "db01"
           Project: Vprofile
           Owner: Shariq from DevOps Team

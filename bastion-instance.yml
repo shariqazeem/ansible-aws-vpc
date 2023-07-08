@@ -37,17 +37,6 @@
             cidr_ip: "{{MYIP}}"
       register: BastionSG_out
 
-    - name: Check if Bastion Host already exists
-      ec2_instance_facts:
-        region: "{{ region }}"
-        filters:
-          "tag:Name": "Bastion_Host"
-          "tag:Project": "Vprofile"
-          "tag:Owner": "Shariq"
-        query:
-          - instances[].instance_id
-      register: existing_instances
-
     - name: Creating Bastion Host
       ec2_instance:
         key_name: vprofile-key
@@ -62,7 +51,6 @@
           Owner: Shariq
         vpc_subnet_id: "{{ pubsub1id }}"
       register: bastionHost_out
-      when: existing_instances.instances | length == 0
 
     - name: Insert/Update "BastionSGid" in vars/vpc-output_vars
       blockinfile:

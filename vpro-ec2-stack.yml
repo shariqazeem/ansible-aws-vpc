@@ -77,10 +77,9 @@
           Name: "web01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
-        instance_ids: "{{vproStackSG_out.group_id}}"
         vpc_subnet_id: "{{privsub1id}}"
       register: web01_out
-      when: web01_out.instance_ids is not defined
+      when: web01_out.instances | length == 0
 
     - name: Creating Tomcat app01
       ec2_instance:
@@ -94,10 +93,9 @@
           Name: "app01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
-        instance_ids: "{{vproStackSG_out.group_id}}"
         vpc_subnet_id: "{{privsub1id}}"
       register: app01_out
-      when: app01_out.instance_ids is not defined
+      when: app01_out.instances | length == 0
 
     - name: Creating memcache mc01
       ec2_instance:
@@ -111,10 +109,9 @@
           Name: "mc01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
-        instance_ids: "{{vproStackSG_out.group_id}}"
         vpc_subnet_id: "{{privsub1id}}"
       register: mc01_out
-      when: mc01_out.instance_ids is not defined
+      when: mc01_out.instances | length == 0
 
     - name: Creating Rabbitmq rmq01
       ec2_instance:
@@ -128,10 +125,9 @@
           Name: "rmq01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
-        instance_ids: "{{vproStackSG_out.group_id}}"
         vpc_subnet_id: "{{privsub1id}}"
       register: rmq01_out
-      when: rmq01_out.instance_ids is not defined
+      when: rmq01_out.instances | length == 0
 
     - name: Creating MySQL db01
       ec2_instance:
@@ -145,10 +141,9 @@
           Name: "db01"
           Project: Vprofile
           Owner: Shariq from DevOps Team
-        instance_ids: "{{vproStackSG_out.group_id}}"
         vpc_subnet_id: "{{privsub1id}}"
       register: db01_out
-      when: db01_out.instance_ids is not defined
+      when: db01_out.instances | length == 0
 
     - debug:
         var: db01_out.instance_ids[0]
@@ -170,6 +165,7 @@
           - protocol: http
             load_balancer_port: 80
             instance_port: 80
+
 
 
     - name: Insert/Update Hosts ip in file provision-stack/group_vars/hostsip

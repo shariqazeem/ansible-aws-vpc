@@ -82,7 +82,7 @@
       register: web01_out
 
     - name: Creating Tomcat app01
-      ec2:
+      ec2_instance:
         key_name: vprokey
         region: "{{region}}"
         instance_type: t2.micro
@@ -98,7 +98,7 @@
       register: app01_out
 
     - name: Creating memcache mc01
-      ec2:
+      ec2_instance:
         key_name: vprokey
         region: "{{region}}"
         instance_type: t2.micro
@@ -114,7 +114,7 @@
       register: mc01_out
 
     - name: Creating Rabbitmq rmq01
-      ec2:
+      ec2_instance:
         key_name: vprokey
         region: "{{region}}"
         instance_type: t2.micro
@@ -130,7 +130,7 @@
       register: rmq01_out
 
     - name: Creating MySQL db01
-      ec2:
+      ec2_instance:
         key_name: vprokey
         region: "{{region}}"
         instance_type: t2.micro

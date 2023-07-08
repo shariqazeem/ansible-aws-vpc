@@ -38,7 +38,7 @@
       register: BastionSG_out
 
     - name: Check if Bastion Host already exists
-      ec2_instance_info:
+      ec2_instance_facts:
         region: "{{ region }}"
         filters:
           "tag:Name": "Bastion_Host"

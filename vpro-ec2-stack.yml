@@ -79,6 +79,7 @@
           Owner: Shariq from DevOps Team
         vpc_subnet_id: "{{privsub1id}}"
       register: web01_out
+      ignore_errors: true
       when: web01_out.instances | length == 0
 
     - name: Creating Tomcat app01
@@ -95,6 +96,7 @@
           Owner: Shariq from DevOps Team
         vpc_subnet_id: "{{privsub1id}}"
       register: app01_out
+      ignore_errors: true
       when: app01_out.instances | length == 0
 
     - name: Creating memcache mc01
@@ -111,6 +113,7 @@
           Owner: Shariq from DevOps Team
         vpc_subnet_id: "{{privsub1id}}"
       register: mc01_out
+      ignore_errors: true
       when: mc01_out.instances | length == 0
 
     - name: Creating Rabbitmq rmq01
@@ -127,6 +130,7 @@
           Owner: Shariq from DevOps Team
         vpc_subnet_id: "{{privsub1id}}"
       register: rmq01_out
+      ignore_errors: true
       when: rmq01_out.instances | length == 0
 
     - name: Creating MySQL db01
@@ -143,6 +147,7 @@
           Owner: Shariq from DevOps Team
         vpc_subnet_id: "{{privsub1id}}"
       register: db01_out
+      ignore_errors: true
       when: db01_out.instances | length == 0
 
     - debug:

@@ -67,7 +67,7 @@
 
     - name: Creating Nginx web01
       ec2_instance:
-        key_name: vprokey
+        key_name: vpro-key
         region: "{{region}}"
         instance_type: t2.micro
         image_id: "{{nginx_ami}}"
@@ -83,7 +83,7 @@
 
     - name: Creating Tomcat app01
       ec2_instance:
-        key_name: vprokey
+        key_name: vpro-key
         region: "{{region}}"
         instance_type: t2.micro
         image_id: "{{tomcat_ami}}"
@@ -99,7 +99,7 @@
 
     - name: Creating memcache mc01
       ec2_instance:
-        key_name: vprokey
+        key_name: vpro-key
         region: "{{region}}"
         instance_type: t2.micro
         image_id: "{{memcache_ami}}"
@@ -115,7 +115,7 @@
 
     - name: Creating Rabbitmq rmq01
       ec2_instance:
-        key_name: vprokey
+        key_name: vpro-key
         region: "{{region}}"
         instance_type: t2.micro
         image_id: "{{rmq_ami}}"
@@ -131,7 +131,7 @@
 
     - name: Creating MySQL db01
       ec2_instance:
-        key_name: vprokey
+        key_name: vpro-key
         region: "{{region}}"
         instance_type: t2.micro
         image_id: "{{mysql_ami}}"

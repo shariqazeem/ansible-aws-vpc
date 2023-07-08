@@ -44,7 +44,8 @@
           "tag:Name": "Bastion_Host"
           "tag:Project": "Vprofile"
           "tag:Owner": "Shariq"
-        instance_states: [running]
+        query:
+          - instances[].instance_id
       register: existing_instances
 
     - name: Creating Bastion Host

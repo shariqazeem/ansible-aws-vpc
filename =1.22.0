@@ -1,0 +1,16 @@
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: boto3 in /usr/lib/python3/dist-packages (1.20.34)
+Collecting boto3
+  Downloading boto3-1.28.1-py3-none-any.whl (135 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 3.1 MB/s eta 0:00:00
+Collecting botocore<1.32.0,>=1.31.1 (from boto3)
+  Downloading botocore-1.31.1-py3-none-any.whl (11.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.0/11.0 MB 68.8 MB/s eta 0:00:00
+Requirement already satisfied: jmespath<2.0.0,>=0.7.1 in /usr/lib/python3/dist-packages (from boto3) (0.10.0)
+Collecting s3transfer<0.7.0,>=0.6.0 (from boto3)
+  Downloading s3transfer-0.6.1-py3-none-any.whl (79 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.8/79.8 kB 13.9 MB/s eta 0:00:00
+Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /usr/lib/python3/dist-packages (from botocore<1.32.0,>=1.31.1->boto3) (2.8.1)
+Requirement already satisfied: urllib3<1.27,>=1.25.4 in /usr/lib/python3/dist-packages (from botocore<1.32.0,>=1.31.1->boto3) (1.26.5)
+Installing collected packages: botocore, s3transfer, boto3
+Successfully installed boto3-1.28.1 botocore-1.31.1 s3transfer-0.6.1

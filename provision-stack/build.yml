@@ -2,7 +2,7 @@
   hosts: localhost
   connection: local
   become: yes
-  taskS:
+  tasks:
     - name: Install jdk, maven, git
       apt:
         name: "{{item}}"

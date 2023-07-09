@@ -34,7 +34,7 @@
       - package
 
     - name: Install unixODBC
-      yum:
+      apt:
         name: unixODBC
         state: present
       tags:

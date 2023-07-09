@@ -31,7 +31,7 @@
       copy:
         src: "{{item}}"
         dest: files/ROOT.war
-      withfileglob: Vprofile-repo/target/*.war
+      with_fileglob: Vprofile-repo/target/*.war
 
     - name: Copy SQL file to files directory
       copy:

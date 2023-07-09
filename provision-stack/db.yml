@@ -1,9 +1,9 @@
 ---
-- name: Setup mysql with accounts db and remote login
+- name: Setup Mysql with accounts db and remote login
   hosts: dbsrvgrp
   gather_facts: no
   tasks:
-    - name: Installing Mysql Service and Dependencies
+    - name: Installing Mysql Service and dependencies
       package:
         name: "{{item}}"
         state: present
@@ -19,15 +19,15 @@
       tags:
         - package
 
-    - name: Start & Enable Mysql service
-      service: 
+    - name: Start and enable mysql service
+      service:
         name: mysql
         state: started
         enabled: yes
       tags:
         - svc
 
-    - name: Creating Mysql user
+    - name: creating mysql user
       mysql_user:
         name: "{{dbuser}}"
         password: "{{dbpass}}"
@@ -35,12 +35,13 @@
         host: '%'
         state: present
 
-    - name: Create accounts db
+
+    - name: Creating accounts DB
       mysql_db:
         name: "{{dbname}}"
         state: present
 
-    - name: Enable Remote login to mysql svc
+    - name: Enable remote login to mysql svc
       lineinfile:
         path: /etc/mysql/mysql.conf.d/mysqld.cnf
         regexp: '^bind-address'
@@ -50,7 +51,7 @@
         - Restart mysql
       tags:
         - conf
-    
+
   handlers:
     - name: Restart mysql
       service:
